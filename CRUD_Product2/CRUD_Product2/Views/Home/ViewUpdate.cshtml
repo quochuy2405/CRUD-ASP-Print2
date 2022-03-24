@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Product
+<!-- Modal edit  -->
+<form action="/Home/UpdateProduct" method="post">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit Product Form</h5>
+				<button type="button" id="close-edit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<span>Id</span><br />
+				<input type="text" name="Id" class="form-control" id="id-edit" readonly value="@Model.Id"/>
+				<span>Name</span><br />
+				<input type="text" name="Name" class="form-control" id="name-edit" value="@Model.Name" />
+				<span>Category</span><br />
+				<input type="text" name="Category" id="category-edit" class="form-control" value="@Model.Category"/>
+				<span>Price</span><br />
+				<input type="text" name="Price" id="price-edit" class="form-control" value="@Model.Price" />
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary" id="edit">Save changes</button>
+			</div>
+		</div>
+	</div>
+
+</form>

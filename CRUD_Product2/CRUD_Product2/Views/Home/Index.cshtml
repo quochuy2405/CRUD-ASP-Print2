@@ -1,0 +1,71 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+@{
+	var productUpdate = ViewBag.productUpdate;
+}
+<form action="/Home/AddProduct" method="post">
+	<div class="modal fade" id="ModalAdd" tabindex="-1" aria-labelledby="ModalAddLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add Product Form</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<span>Name</span><br />
+					<input type="text" name="Name" class="form-control" id="name" />
+					<span>Category</span><br />
+					<input type="text" name="Category" id="category" class="form-control" />
+					<span>Price</span><br />
+					<input type="text" name="Price" id="price" class="form-control" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary" id="add">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<table class="table table-bordered table-condensed table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Category</th>
+			<th>Price</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody id="form-list-client-body">
+
+		@foreach (var item in CRUD_Product2.Global.ListGlobal.products)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Category</td>
+				<td>@item.Price</td>
+				<td>
+					<a href="/Home/ViewUpdate?id=@item.Id">
+						<button type="button" class="btn btn-primary edit">
+							<i class="fa-solid fa-pen-to-square"></i>
+
+						</button>
+					</a>
+					<a href="/Home/DeleteProduct?id=@item.Id">
+						<button type="button"
+							class="btn btn-danger delete ">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</a>
+
+				</td>
+			</tr>
+		}
+
+	</tbody>
+</table>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAdd">
+	Add Product
+</button>
